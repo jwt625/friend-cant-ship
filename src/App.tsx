@@ -56,6 +56,7 @@ function App() {
         accent={theme.accent}
         isSimple={theme.isSimple}
         progress={progress}
+        phase={phase}
       />
 
       <main className="story">
