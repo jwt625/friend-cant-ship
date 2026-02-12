@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useName } from './hooks/useName';
 import { useScrollProgress, getPhase, getTimeOfDay, getSeason } from './hooks/useScrollProgress';
 import { getThemeForProgress } from './theme/colorThemes';
 import { storySections } from './data/storyContent';
@@ -8,7 +7,6 @@ import { Background } from './components/Background';
 import './App.css';
 
 function App() {
-  const name = useName();
   const progress = useScrollProgress();
   const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set(['open-1']));
 
@@ -41,11 +39,7 @@ function App() {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [name]);
-
-  if (!name) {
-    return <div className="loading" style={{ background: '#0a0a0a', color: '#fafafa', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>...</div>;
-  }
+  }, []);
 
   return (
     <div className="app" style={{ '--text-color': theme.text } as React.CSSProperties}>
@@ -64,7 +58,6 @@ function App() {
           <div key={section.id} data-section-id={section.id}>
             <StorySection
               section={section}
-              name={name}
               isVisible={visibleSections.has(section.id)}
               theme={theme}
             />

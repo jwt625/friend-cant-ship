@@ -1,45 +1,48 @@
+export type Messenger = 'imessage' | 'whatsapp' | 'signal' | 'telegram' | 'sms';
+
 export interface StorySection {
   id: string;
   phase: 'opening' | 'mockery' | 'chaos' | 'philosophy' | 'inspiration' | 'closing';
-  content: string | ((name: string) => string);
+  content: string;
   type: 'text' | 'stat' | 'chat' | 'quote';
   emphasis?: 'large' | 'medium' | 'small';
+  messenger?: Messenger;
 }
 
 export const storySections: StorySection[] = [
   // OPENING - Stark, simple
   { id: 'open-1', phase: 'opening', content: 'This is a story about a website.', type: 'text', emphasis: 'large' },
-  { id: 'open-2', phase: 'opening', content: (name) => `About ${name}.`, type: 'text', emphasis: 'large' },
+  { id: 'open-2', phase: 'opening', content: 'About someone.', type: 'text', emphasis: 'large' },
   { id: 'open-3', phase: 'opening', content: 'And the website that was never made.', type: 'text', emphasis: 'medium' },
 
   // MOCKERY - The excuses begin
-  { id: 'mock-1', phase: 'mockery', content: (name) => `"I'll have it done by Tuesday" — ${name}`, type: 'chat' },
+  { id: 'mock-1', phase: 'mockery', content: "I'll have it done by Tuesday", type: 'chat', messenger: 'imessage' },
   { id: 'mock-stat-1', phase: 'mockery', content: 'Tuesdays passed: 47', type: 'stat' },
-  { id: 'mock-2', phase: 'mockery', content: (name) => `"Actually, maybe Friday is more realistic" — ${name}`, type: 'chat' },
-  { id: 'mock-3', phase: 'mockery', content: (name) => `"I'm still learning the basics" — ${name}`, type: 'chat' },
+  { id: 'mock-2', phase: 'mockery', content: "Actually, maybe Friday is more realistic", type: 'chat', messenger: 'whatsapp' },
+  { id: 'mock-3', phase: 'mockery', content: "I'm still learning the basics", type: 'chat', messenger: 'telegram' },
   { id: 'mock-stat-2', phase: 'mockery', content: 'YouTube tutorials watched: 34', type: 'stat' },
   { id: 'mock-stat-3', phase: 'mockery', content: 'Lines of code written: 0', type: 'stat' },
-  { id: 'mock-4', phase: 'mockery', content: (name) => `"I want to think a bit more about what I want to say" — ${name}`, type: 'chat' },
-  { id: 'mock-5', phase: 'mockery', content: (name) => `"My cognitive battery is really low today" — ${name}`, type: 'chat' },
-  { id: 'mock-6', phase: 'mockery', content: (name) => `"I can definitely finish this soon" — ${name}`, type: 'chat' },
+  { id: 'mock-4', phase: 'mockery', content: "I want to think a bit more about what I want to say", type: 'chat', messenger: 'signal' },
+  { id: 'mock-5', phase: 'mockery', content: "My cognitive battery is really low today", type: 'chat', messenger: 'imessage' },
+  { id: 'mock-6', phase: 'mockery', content: "I can definitely finish this soon", type: 'chat', messenger: 'sms' },
   { id: 'mock-stat-4', phase: 'mockery', content: 'Times "soon" was promised: 23', type: 'stat' },
 
   // CHAOS - The spiral deepens, time passes
   { id: 'chaos-1', phase: 'chaos', content: 'Days turned into weeks.', type: 'text', emphasis: 'medium' },
   { id: 'chaos-stat-1', phase: 'chaos', content: 'Excuses made: 156', type: 'stat' },
-  { id: 'chaos-2', phase: 'chaos', content: (name) => `"I impulsively bought a 3D printer" — ${name}`, type: 'chat' },
+  { id: 'chaos-2', phase: 'chaos', content: "I impulsively bought a 3D printer", type: 'chat', messenger: 'whatsapp' },
   { id: 'chaos-3', phase: 'chaos', content: 'Weeks turned into months.', type: 'text', emphasis: 'medium' },
   { id: 'chaos-stat-2', phase: 'chaos', content: 'New hobbies started: 7', type: 'stat' },
   { id: 'chaos-stat-3', phase: 'chaos', content: 'New hobbies finished: 0', type: 'stat' },
-  { id: 'chaos-4', phase: 'chaos', content: (name) => `"I'm nervous to put something half-assed out there" — ${name}`, type: 'chat' },
-  { id: 'chaos-5', phase: 'chaos', content: (name) => `"Very glad I didn't ship it LOL" — ${name}`, type: 'chat' },
+  { id: 'chaos-4', phase: 'chaos', content: "I'm nervous to put something half-assed out there", type: 'chat', messenger: 'telegram' },
+  { id: 'chaos-5', phase: 'chaos', content: "Very glad I didn't ship it LOL", type: 'chat', messenger: 'imessage' },
   { id: 'chaos-6', phase: 'chaos', content: 'Months turned into seasons.', type: 'text', emphasis: 'medium' },
   { id: 'chaos-stat-4', phase: 'chaos', content: 'Domain names purchased: 3', type: 'stat' },
   { id: 'chaos-stat-5', phase: 'chaos', content: 'Websites deployed: 0', type: 'stat' },
-  { id: 'chaos-7', phase: 'chaos', content: (name) => `"Please forgive me" — ${name}`, type: 'chat' },
-  { id: 'chaos-8', phase: 'chaos', content: (name) => `"One day I will finish this" — ${name}`, type: 'chat' },
-  { id: 'chaos-9', phase: 'chaos', content: (name) => `"In my defense... Ok nvm" — ${name}`, type: 'chat' },
-  { id: 'chaos-10', phase: 'chaos', content: (name) => `"Yeah you're right I'm just giving you content" — ${name}`, type: 'chat' },
+  { id: 'chaos-7', phase: 'chaos', content: "Please forgive me", type: 'chat', messenger: 'signal' },
+  { id: 'chaos-8', phase: 'chaos', content: "One day I will finish this", type: 'chat', messenger: 'whatsapp' },
+  { id: 'chaos-9', phase: 'chaos', content: "In my defense... Ok nvm", type: 'chat', messenger: 'sms' },
+  { id: 'chaos-10', phase: 'chaos', content: "Yeah you're right I'm just giving you content", type: 'chat', messenger: 'imessage' },
   { id: 'chaos-11', phase: 'chaos', content: 'Seasons turned into years.', type: 'text', emphasis: 'large' },
 
   // PHILOSOPHY - The turn

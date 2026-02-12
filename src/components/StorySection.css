@@ -48,14 +48,14 @@
   margin: 0;
 }
 
-/* Chat bubble styling */
+/* Chat bubble base styling */
 .chat-bubble {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 1rem 1.5rem;
-  max-width: 600px;
-  backdrop-filter: blur(10px);
+  position: relative;
+  padding: 0.6rem 0.9rem 0.4rem 0.9rem;
+  max-width: 420px;
+  border-radius: 18px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin-left: 12px; /* Space for tail on left */
 }
 
 .story-section--chaos .chat-bubble {
@@ -63,9 +63,143 @@
 }
 
 .chat-text {
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  font-style: italic;
-  opacity: 0.9;
+  font-size: clamp(0.95rem, 2.2vw, 1.2rem);
+  font-style: normal;
+  line-height: 1.4;
+  display: block;
+}
+
+.chat-timestamp {
+  display: block;
+  font-size: 0.7rem;
+  opacity: 0.6;
+  margin-top: 0.3rem;
+  text-align: right;
+}
+
+.chat-tail {
+  position: absolute;
+  bottom: 0;
+  left: -8px; /* Tail on left side (sender) */
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+}
+
+/* iMessage - Blue bubble (sender/left side) */
+.chat-bubble--imessage {
+  background: linear-gradient(180deg, #e5e5ea 0%, #d1d1d6 100%);
+  color: #000000;
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.chat-bubble--imessage .chat-tail::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  background: #d1d1d6;
+  border-radius: 0 0 12px 0;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+.chat-bubble--imessage .chat-timestamp {
+  color: #8e8e93;
+}
+
+/* WhatsApp - White/light bubble (sender/left side) */
+.chat-bubble--whatsapp {
+  background: #ffffff;
+  color: #303030;
+  border-radius: 8px 8px 8px 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.chat-bubble--whatsapp .chat-tail::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-right: 8px solid #ffffff;
+  border-bottom: 8px solid transparent;
+}
+
+.chat-bubble--whatsapp .chat-timestamp {
+  color: #667781;
+}
+
+/* Signal - Light gray bubble (sender/left side) */
+.chat-bubble--signal {
+  background: linear-gradient(180deg, #f1f1f1 0%, #e8e8e8 100%);
+  color: #000000;
+  border-radius: 18px 18px 18px 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.chat-bubble--signal .chat-tail::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: #e8e8e8;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+.chat-bubble--signal .chat-timestamp {
+  color: #6b6b6b;
+}
+
+/* Telegram - White bubble (sender/left side) */
+.chat-bubble--telegram {
+  background: #ffffff;
+  color: #000000;
+  border-radius: 16px 16px 16px 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.chat-bubble--telegram .chat-tail::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
+}
+
+.chat-bubble--telegram .chat-timestamp {
+  color: #a0acb6;
+}
+
+/* SMS - Light gray (Android received style) */
+.chat-bubble--sms {
+  background: linear-gradient(180deg, #f0f0f0 0%, #e6e6e6 100%);
+  color: #202020;
+  border-radius: 20px 20px 20px 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.chat-bubble--sms .chat-tail::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-right: 10px solid #e6e6e6;
+  border-bottom: 10px solid transparent;
+}
+
+.chat-bubble--sms .chat-timestamp {
+  color: #757575;
 }
 
 /* Stat styling */
