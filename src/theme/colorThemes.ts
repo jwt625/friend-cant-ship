@@ -86,7 +86,7 @@ export const phaseStyles = {
 };
 
 export function getThemeForProgress(
-  progress: number,
+  _progress: number,
   phase: string,
   timeOfDay: string,
   season: string
@@ -95,11 +95,11 @@ export function getThemeForProgress(
   const timeTheme = timeThemes[timeOfDay as keyof typeof timeThemes] || timeThemes.morning;
   const seasonAccent = seasonAccents[season as keyof typeof seasonAccents] || seasonAccents.spring;
 
-  if (phaseStyle?.simple) {
+  if (phaseStyle?.simple && 'background' in phaseStyle) {
     return {
-      background: phaseStyle.background || '#0a0a0a',
-      backgroundGradient: phaseStyle.background || '#0a0a0a',
-      text: phaseStyle.text || '#fafafa',
+      background: phaseStyle.background,
+      backgroundGradient: phaseStyle.background,
+      text: phaseStyle.text,
       accent: '#fafafa',
       muted: '#666666',
       isSimple: true,
