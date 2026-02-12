@@ -1,0 +1,106 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: background 1s ease;
+  overflow: hidden;
+}
+
+.background--simple {
+  background: #0a0a0a !important;
+}
+
+.background__icons {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.background__time-icon {
+  position: absolute;
+  right: 10%;
+  transition: top 0.5s ease;
+}
+
+.time-icon {
+  opacity: 0.4;
+  filter: blur(1px);
+}
+
+.background__season-icon {
+  position: absolute;
+  left: 5%;
+  bottom: 10%;
+  opacity: 0.2;
+}
+
+.season-icon {
+  transform: scale(1.5);
+}
+
+/* Particles */
+.background__particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: floatParticle 8s ease-in-out infinite;
+}
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.1;
+  }
+  25% {
+    transform: translateY(-30px) translateX(10px) scale(1.2);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-20px) translateX(-15px) scale(0.8);
+    opacity: 0.2;
+  }
+  75% {
+    transform: translateY(-40px) translateX(5px) scale(1.1);
+    opacity: 0.25;
+  }
+}
+
+/* Hide particles in simple mode */
+.background--simple .background__particles,
+.background--simple .background__icons {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .background__time-icon {
+    right: 5%;
+  }
+  
+  .time-icon {
+    transform: scale(0.7);
+  }
+  
+  .season-icon {
+    transform: scale(1);
+  }
+  
+  .particle {
+    width: 5px;
+    height: 5px;
+  }
+}
+
